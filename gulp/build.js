@@ -29,19 +29,13 @@ gulp.task('scripts', function () {
         .pipe($.size());
 });
 
-gulp.task('copy-docs', function () {
-  return gulp.src('docs/**/*')
-      .pipe(gulp.dest('dist/'))
-      .pipe($.size());
-});
-
 gulp.task('partials', function () {
   return gulp.src('app/partials/**/*.html')
-      /*.pipe($.minifyHtml({
+      .pipe($.minifyHtml({
         empty: true,
         spare: true,
         quotes: true
-      }))*/
+      }))
       .pipe($.ngHtml2js({
         moduleName: "vissensePlayground",
         prefix: "partials/"
@@ -106,4 +100,4 @@ gulp.task('clean', function () {
     return gulp.src(['.tmp', 'dist'], { read: false }).pipe($.clean());
 });
 
-gulp.task('build', ['html', 'partials', 'images', 'fonts', 'copy-docs']);
+gulp.task('build', ['html', 'partials', 'images', 'fonts']);

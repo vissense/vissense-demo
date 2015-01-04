@@ -209,7 +209,7 @@ angular.module('vissensePlayground')
             elementId: $scope.elementId
           };
         }],
-        templateUrl: '/partials/directives/default-draggable-element.html'
+        templateUrl: 'partials/directives/default-draggable-element.html'
       };
 
       return d;
@@ -442,7 +442,7 @@ angular.module('vissensePlayground')
         });
 
       }],
-      templateUrl : '/partials/directives/visibility-infocard.html'
+      templateUrl : 'partials/directives/visibility-infocard.html'
     };
 
     return d;
