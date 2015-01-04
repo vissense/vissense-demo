@@ -1,3 +1,5 @@
+.idea/
+*.iml
 app/
 dist/
 node_modules/
