@@ -1,0 +1,24 @@
+<h1><code ng:non-bindable="">debounce</code>
+<span class="hint">( function in module <code ng:non-bindable="">VisSense.Utils</code>
+ )</span>
+</h1>
+<div><h2 id="Description">Description</h2>
+<div class="description"><p>Returns a function that delays invoking  <code class="plain">fn</code>  until after  <code class="plain">delay</code>  milliseconds
+have elapsed since the last time it was invoked.</p>
+
+<pre class="prettyprint linenums">window.addEventListener('resize', VisSense.Utils.debounce(50, function() { 
+  console.log('resizing...'); 
+}));
+// => logs 'scrolling...' at most every 50ms while the user resizes the browser window
+</pre></div>
+<h2 id="Parameters">Parameters</h2>
+<ul class="parameters"><li><code class="plain">fn – {*} – </code>
+<p>The function to debounce.</p></li>
+<li><code class="plain">delay – {*} – </code>
+<p>The number of milliseconds to delay.</p></li>
+</ul>
+<h2 id="Returns">Returns</h2>
+<div class="returns"><code class="plain">{Number}</code>
+– <p>Returns a function that delays invoking  <code class="plain">fn</code>  until after  <code class="plain">delay</code>  milliseconds
+have elapsed since the last time it was invoked.</p></div>
+</div>

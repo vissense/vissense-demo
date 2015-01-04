@@ -1,0 +1,72 @@
+<style>
+  .visibility-stats-container {
+    margin: 0px;
+    position: fixed;
+    left: 42px;
+    bottom: 13px;
+    width: 600px;
+    height: 200px;
+    box-shadow: 3px 3px 15px 3px rgba(0, 0, 0, 0.4);
+    z-index: 99999;
+    background-color: rgba(242,242,242,0.9);
+  }
+  .flexbox {
+    display: box;
+    display: -webkit-box;
+    display: -moz-box;
+
+    box-orient: horizontal;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+  }
+
+  .box {
+    font-size: 23px;
+    padding: 10px;
+    width: 150px;
+    text-align: center;
+  }
+  .box small {
+    color: #888;
+  }
+</style>
+<div class="visibility-stats-container">
+  <div style="text-align:center" data-tbk-vismon-state="example1"></div>
+  <div class="flexbox">
+    <div class="box">
+      <div>{{timeVisible / 1000 | number:1}}s</div>
+      <small>time visible</small>
+    </div>
+    <div class="box">
+      <div>{{timeFullyVisible / 1000 | number:1}}s</div>
+      <small>time fullyvisible</small>
+    </div>
+    <div class="box">
+      <div>{{timeHidden * 100 / duration | number:0}}%</div>
+      <small>percentage hidden</small>
+    </div>
+    <div class="box">
+      <div>{{timeVisible * 100 / duration | number:0}}%</div>
+      <small>percentage visible</small>
+    </div>
+  </div>
+  <div class="flexbox">
+    <div class="box">
+      <div>{{timeHidden / 1000 | number:1}}s</div>
+      <small>time hidden</small>
+    </div>
+    <div class="box">
+      <div>{{timeRelativeVisible / 1000 | number:1}}s</div>
+      <small>time relative</small>
+    </div>
+    <div class="box">
+      <div>{{percentage.min * 100 | number:0}}%</div>
+      <small>percentage min</small>
+    </div>
+    <div class="box">
+      <div>{{percentage.max * 100 | number:0}}%</div>
+      <small>percentage max</small>
+    </div>
+  </div>
+
+</div>

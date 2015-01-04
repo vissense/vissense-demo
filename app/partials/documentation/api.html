@@ -1,0 +1,112 @@
+
+<h3 class="h3">vissense</h3>
+
+
+<div data-hljs>
+vis.percentage();
+</div>
+<span>gets the current visible percentage (0..1)</span>
+
+
+<hr />
+
+
+<div data-hljs>
+vis.isHidden();
+</div>
+<span>´true´ if element is hidden</span>
+
+
+<hr />
+
+
+<div data-hljs>
+vis.isVisible();
+</div>
+<span>´true´ if element is visible</span>
+
+
+<hr />
+
+
+<div data-hljs>
+vis.isFullyVisible();
+</div>
+<span>´true´ if element is fully visible</span>
+
+
+<hr />
+
+
+<div data-hljs>
+vis.state();
+</div>
+<span>gets an object representing the current state</span>
+
+<div data-hljs>
+{
+    "code": 1,
+    "state": "visible",
+    "percentage": 0.55,
+    "visible": true,
+    "fullyvisible": false,
+    "hidden": false
+    "previous" : {}
+}
+</div>
+
+
+<hr />
+
+
+<h3 class="h3">vissense-monitor</h3>
+<ul>
+    <li><code>start()</code> starts observing the element</li>
+    <li><code>stop()</code> stops observing the element</li>
+    <li><code>update()</code> manually run the update procedure. this will fire any registered handlers</li>
+</ul>
+<hr />
+
+
+<div data-hljs>
+vismon.on();
+</div>
+<span>registers an event handler</span>
+
+<div data-hljs>
+vismon.on('update', function(monitor) { ... });
+vismon.on('hidden', function(monitor) { ... });
+vismon.on('visible', function(monitor) { ... });
+vismon.on('fullyvisible', function(monitor) { ... });
+vismon.on('percentagechange', function(newValue, oldValue, monitor) { ... });
+vismon.on('visibilitychange', function(monitor) { ... });
+</div>
+<hr />
+
+
+<div data-hljs>
+vismon.state();
+</div>
+<span>gets an object representing the current state</span>
+
+<div data-hljs>
+{
+    "code": 1,
+    "state": "visible",
+    "percentage": 0.55,
+    "visible": true,
+    "fullyvisible": false,
+    "hidden": false
+    "previous" : {
+        "code": 2,
+        "state": "fullyvisible",
+        "percentage": 1,
+        "visible": true,
+        "fullyvisible": true,
+        "hidden": false
+    }
+}
+</div>
+
+
+<hr />

@@ -1,0 +1,102 @@
+<section data-tbk-default-demo-navigation></section>
+
+<style>
+
+  .section-stats-container {
+    margin: 0px;
+    position: fixed;
+    left: 42px;
+    bottom: 13px;
+    width: 600px;
+    height: 140px;
+    box-shadow: 3px 3px 15px 3px rgba(0, 0, 0, 0.4);
+    z-index: 99999;
+    background-color: rgba(242,242,242,0.9);
+   }
+</style>
+
+<header class="container">
+  <h2>Track Section Demo</h2>
+</header>
+
+<div class="section-stats-container">
+  <ul>
+    <li>
+      <a data-ng-click="scrollToElement('examples-section')">section 1</a>
+      <span data-tbk-vismon-state="examples-section"></span>
+    </li>
+
+    <li>
+      <a data-ng-click="scrollToElement('demo-section')">section 2</a>
+      <span data-tbk-vismon-state="demo-section"></span>
+    </li>
+
+    <li>
+      <a data-ng-click="scrollToElement('plugins-section')">section 3</a>
+      <span data-tbk-vismon-state="plugins-section"></span>
+    </li>
+
+  </ul>
+</div>
+
+<div class="">
+
+  <div class="code-sample">
+    <div class="highlight-module highlight-module--left highlight-module--learning" id="examples-section">
+      <div class="highlight-module__container">
+        <div class="pull-left" style="font-size: 150px; padding: 30px;">
+          <span class="fa fa-eye"></span>
+        </div>
+        <div class="highlight-module__content g-wide--push-1 g-wide--pull-1 g-medium--push-1">
+          <h2 class="highlight-module__title">1 Track visibility</h2>
+
+          <p class="highlight-module__text">
+            immediately know when an element becomes hidden,
+            partly visible or fully visible.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="code-sample">
+    <div class="highlight-module  highlight-module--right highlight-module--remember" id="demo-section">
+      <div class="highlight-module__container row">
+        <div class="pull-right" style="font-size: 150px; padding: 30px;">
+          <span class="fa fa-paw"></span>
+        </div>
+        <div class="highlight-module__content g-wide--push-1 g-wide--pull-1 g-medium--pull-1">
+          <h2 class="highlight-module__title">2 Observe changes</h2>
+
+          <p class="highlight-module__text">
+            react on visibility changes and execute proper actions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="code-sample">
+    <div class="highlight-module highlight-module--left highlight-module--learning" id="plugins-section">
+      <div class="highlight-module__container">
+        <div class="pull-left" style="font-size: 150px; padding: 30px;">
+          <span class="fa fa-puzzle-piece"></span>
+        </div>
+        <div class="highlight-module__content g-wide--push-1 g-wide--pull-1 g-medium--pull-1">
+
+          <h2 class="highlight-module__title">3 Create extensions</h2>
+
+          <p class="highlight-module__text">
+            vissense.js can be extended. checkout existing plugins or
+            create your own extension - it's supereasy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<br data-ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]"/>
+
+</div>

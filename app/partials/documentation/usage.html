@@ -1,0 +1,71 @@
+
+<p>
+    Include <code>vissense.js</code> in your page, it has no dependencies.
+</p>
+<p>
+    Call <code>VisSense()</code> passing an element node and an optional config object:
+</p>
+<ul>
+    <li><code>hidden</code> <span class="label label-default">default: 0</span> if percentage is equal or below this limit the element is considered hidden</li>
+    <li><code>fullyvisible</code><span class="label label-default">default: 1</span> if percentage is equal or above this limit the element is considered fully visible</li>
+</ul>
+
+<div data-hljs>
+var element = document.getElementById('my-element');
+
+var vis = new VisSense(element, {
+    hidden: 0.1,
+    fullyvisible: 0.9
+});
+</div>
+<h3 class="h3">vissense-monitor</h3>
+<p>
+    Call <code>monitor()</code> of your vissense instance passing an optional config object with the following:
+</p>
+<ul>
+    <li><code>update</code> function to run when elements update function is called</li>
+    <li><code>hidden</code> function to run when element becomes hidden</li>
+    <li><code>visible</code> function to run when element becomes visible</li>
+    <li><code>fullyvisible</code> function to run when element becomes fully visible</li>
+    <li><code>visibilitychange</code> function to run when the visibility of the element changes</li>
+    <li><code>percentagechange</code> function to run when the percentage of the element changes</li>
+    <li><code>strategy</code> the strategy for observing the element.
+        vissense comes with three predefined strategies:
+        <ul>
+            <li><code>NoopStrategy</code> <span class="label label-default">default</span>
+                this strategy (like implied by its name) does nothing on its own.
+                it is your responsibility to invoke <code>update()</code> on the monitor instance.
+            </li>
+            <li><code>EventStrategy</code> this strategy
+                registers event handlers for
+                <code>visibilitychange</code>,
+                <code>scroll</code> and
+                <code>resize</code>
+                and calls <code>update()</code> accordingly.
+            </li>
+            <li><code>PollingStrategy</code>
+                this strategy invokes <code>update()</code> periodically.
+            </li>
+        </ul>
+    </li>
+</ul>
+<div data-hljs>
+var vismon = vis.monitor({
+    strategy: new VisSense.VisMon.Strategy.PollingStrategy({
+        interval: 1000 // ms
+    }),
+    update: function() { ... },
+    hidden: function() { ... },
+    visible: function() { ... },
+    fullyvisible: function() { ... },
+    visibilitychange: function() { ... },
+    percentagechange: function() { ... }
+});
+</div>
+
+<p>
+    alternatively you can always register event handlers later with <code>on()</code>
+</p>
+<div data-hljs>
+vismon.on('percentagechange', function() { ... });
+</div>
