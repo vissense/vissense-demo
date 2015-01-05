@@ -83,14 +83,22 @@ gulp.task('images', function () {
 });
 
 gulp.task('bower-fonts', function () {
-    return $.bowerFiles()
-        .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
-        .pipe($.flatten())
-        .pipe(gulp.dest('dist/app/fonts'))
-        .pipe($.size());
+  return $.bowerFiles()
+    .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
+    .pipe($.flatten())
+    .pipe(gulp.dest('dist/app/fonts'))
+    .pipe($.size());
 });
 
-gulp.task('fonts', ['bower-fonts'], function () {
+/* Duplicate fonts into styles folder
+* for compatibility with github pages */
+gulp.task('local-fonts', function () {
+  return gulp.src(['app/fonts/**'])
+    .pipe(gulp.dest('dist/app/styles/fonts'))
+    .pipe($.size({title: 'fonts'}));
+});
+
+gulp.task('fonts', ['local-fonts', 'bower-fonts'], function () {
   return gulp.src(['app/fonts/**'])
     .pipe(gulp.dest('dist/app/fonts'))
     .pipe($.size({title: 'fonts'}));
