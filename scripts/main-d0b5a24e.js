@@ -701,9 +701,9 @@
         i.getMetric('time.visible').inc(a), i.getMetric('time.relativeVisible').inc(a * b.percentage);
       }), e(k.running() ? k.stop().get() : -1, function (a) {
         i.getMetric('time.fullyvisible').inc(a);
-      }), j.startIf(b.visible), k.startIf(b.fullyvisible), l.startIf(b.hidden);
+      }), j.startIf(b.visible), k.startIf(b.fullyvisible), l.startIf(b.hidden), m.startIf(!m.running());
     }
-    var g = this, h = !1, i = new f(), j = d.stopwatch(), k = d.stopwatch(), l = d.stopwatch(), m = d.stopwatch().start();
+    var g = this, h = !1, i = new f(), j = d.stopwatch(), k = d.stopwatch(), l = d.stopwatch(), m = d.stopwatch();
     i.addMetric('time.visible', new d.counter()), i.addMetric('time.fullyvisible', new d.counter()), i.addMetric('time.hidden', new d.counter()), i.addMetric('time.relativeVisible', new d.counter()), i.addMetric('time.duration', new d.counter()), i.addMetric('percentage', new d.counter()), i.addMetric('percentage.max', new d.counter(0)), i.addMetric('percentage.min', new d.counter(1));
     var n = function () {
       c(a), b(a);
