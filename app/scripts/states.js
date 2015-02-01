@@ -40,7 +40,7 @@ angular.module('vissense.playground.states', [
   .state('demos.track-sections', {
     url: '/demo-track-sections',
     templateUrl: 'partials/demos/demo_track_sections.html',
-    controller: 'MainCtrl'
+    controller: 'TrackSectionsDemoCtrl'
   })
   .state('demos.draggable-element', {
     url: '/single',

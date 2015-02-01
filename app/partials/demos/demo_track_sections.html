@@ -97,6 +97,38 @@
 
 </div>
 
-<br data-ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]"/>
+<h3>Code</h3>
+This examples uses jQuery to fade in the sections.
+
+<code data-hljs>
+var startOpacityMonitor = function(elementId) {
+  var sectionElement = jQuery('#' + elementId);
+  var sectionMonitor = VisSense(sectionElement[0]).monitor({
+    // update when user scrolls or resizes the page
+    strategy : VisSense.VisMon.Strategy.EventStrategy({ debounce: 100 }),
+
+    percentagechange: function(newValue, oldValue) {
+      var difference = newValue - oldValue;
+      var duration = 500 * Math.max(difference, 0.5);
+      var opacity = Math.max(newValue, 0.3);
+      sectionElement.fadeTo(duration, opacity);
+    }
+  }).start();
+
+  return function stopOpacityMonitor() {
+    sectionMonitor.stop();
+  };
+};
+
+var stop = startOpacityMonitor('examples-section');
+
+...
+
+if (/* user leaves the page, etc. */) {
+  stop();
+}
+
+
+</code>
 
 </div>

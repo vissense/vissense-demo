@@ -456,6 +456,51 @@ function ($scope) {
     $scope.subtitle = 'demos';
 
 }])
+.controller('TrackSectionsDemoCtrl', [
+'$window',
+'$document',
+'$scope',
+function ($window, $document, $scope) {
+
+  $scope.scrollToElement = function(elementId) {
+    $('html, body').animate({
+      scrollTop: jQuery('#' + elementId).offset().top
+    }, 500);
+    //$window.scrollTo(0, top);
+  };
+
+  var changeOpacityOnPercentageChangeOfElementWithId = function(elementId) {
+    var sectionElement = jQuery('#' + elementId);
+
+    var onChange = function(monitor) {
+      var newValue = monitor.state().percentage;
+      var oldValue = (monitor.state().previous.percentage || 0);
+      var difference = newValue - oldValue;
+      var duration = 500 * Math.max(difference, 0.5);
+
+      // set the opacity to the actual visibility percentage
+      var opacity = Math.max(newValue, 0.25);
+      sectionElement.fadeTo(duration, opacity);
+    };
+
+    var sectionMonitor = VisSense(sectionElement[0]).monitor({
+      // update when user scrolls or resizes the page
+      strategy : VisSense.VisMon.Strategy.EventStrategy({ debounce: 50 }),
+
+      percentagechange: function(newValue, oldValue, monitor) {
+        onChange(monitor);
+      }
+    }).start();
+
+    $scope.$on('$destroy', function() {
+      sectionMonitor.stop();
+    });
+  };
+
+  changeOpacityOnPercentageChangeOfElementWithId('examples-section');
+  changeOpacityOnPercentageChangeOfElementWithId('demo-section');
+  changeOpacityOnPercentageChangeOfElementWithId('plugins-section');
+}])
 
 .controller('TrackVisiblityDemoCtrl', [
 '$window',
