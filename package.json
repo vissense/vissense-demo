@@ -1,13 +1,16 @@
 {
   "name": "vissense-demo",
   "version": "0.0.0",
+  "scripts": {
+    "test": "gulp default --verbose"
+  },
   "dependencies": {},
   "devDependencies": {
     "connect": "^2.14.4",
     "connect-livereload": "^0.4.0",
     "gulp": "^3.6.2",
     "gulp-autoprefixer": "^0.0.7",
-    "gulp-bower-files": "^0.2.4",
+    "main-bower-files": "^2.5.0",
     "gulp-cache": "^0.1.11",
     "gulp-clean": "^0.3.0",
     "gulp-csso": "^0.2.8",

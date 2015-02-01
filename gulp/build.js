@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
+var mainBowerFiles = require('main-bower-files');
 
 var $ = require('gulp-load-plugins')();
 
@@ -83,7 +84,7 @@ gulp.task('images', function () {
 });
 
 gulp.task('bower-fonts', function () {
-  return $.bowerFiles()
+  return gulp.src(mainBowerFiles())
     .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
     .pipe($.flatten())
     .pipe(gulp.dest('dist/app/fonts'))

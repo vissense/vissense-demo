@@ -485,10 +485,10 @@ function ($window, $document, $scope) {
 
     var sectionMonitor = VisSense(sectionElement[0]).monitor({
       // update when user scrolls or resizes the page
-      strategy : VisSense.VisMon.Strategy.EventStrategy({ debounce: 50 }),
+      strategy : VisSense.VisMon.Strategy.EventStrategy({ debounce: 75 }),
 
       percentagechange: function(newValue, oldValue, monitor) {
-        onChange(monitor);
+        VisSense.Utils.defer(onChange(monitor), 75);
       }
     }).start();
 
