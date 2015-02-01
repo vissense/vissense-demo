@@ -4,8 +4,21 @@
 vissense-demo
 =================
 
-[A playground for VisSense.js](https://vissense.github.io/vissense-demo/) -.
+[A playground for VisSense.js](https://vissense.github.io/vissense-demo/).
 
-This project aims to provide a basic overview about VisSense.js can actually do for you.
+This project aims to provide a basic overview about what [VisSense.js](https://github.com/vissense/vissense) can actually do for you.
 
 It is more or less a proof-of-concept type of poject - so the source is still a bit messy.
+
+
+Contribute
+------------
+
+- Issue Tracker: https://github.com/vissense/vissense-demo/issues
+- Source Code: https://github.com/vissense/vissense-demo
+
+### Clone Repository
+`git clone https://github.com/vissense/vissense-demo.git`
+
+### Suggest an example
+Suggestions for additional examples or even pull-request with new examples are welcomed.
