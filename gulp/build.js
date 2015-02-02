@@ -46,6 +46,7 @@ gulp.task('html', ['styles', 'scripts', 'partials'], function () {
   var jsFilter = $.filter('**/*.js');
   var cssFilter = $.filter('**/*.css');
 
+  var assets = $.useref.assets();
   return gulp.src('app/*.html')
     .pipe($.inject(gulp.src('.tmp/partials/**/*.js'), {
       read: false,
@@ -53,7 +54,7 @@ gulp.task('html', ['styles', 'scripts', 'partials'], function () {
       addRootSlash: false,
       ignorePath: '.tmp'
     }))
-    .pipe($.useref.assets())
+    .pipe(assets)
     .pipe($.rev())
     .pipe(jsFilter)
     .pipe($.ngAnnotate())
@@ -62,7 +63,7 @@ gulp.task('html', ['styles', 'scripts', 'partials'], function () {
     .pipe(cssFilter)
     .pipe($.csso())
     .pipe(cssFilter.restore())
-    .pipe($.useref.restore())
+    .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.revReplace())
     .pipe(gulp.dest('dist/app'))
