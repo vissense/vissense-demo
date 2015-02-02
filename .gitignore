@@ -11,5 +11,3 @@ dist/
 .tmp
 .sass-cache
 
-sync-ghpages.sh
-
