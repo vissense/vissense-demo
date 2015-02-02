@@ -16,6 +16,9 @@ echo "Copying from tmp-dist/ to ./ .."
 cp -R tmp-dist/app/* ./
 
 read -p "Enter a commit message: " commitMessage
+git status
+
+git add -A .
 
 git commit -am "$commitMessage"
 
