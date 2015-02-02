@@ -6,11 +6,13 @@ var $ = require('gulp-load-plugins')();
 
 gulp.task('connect:src', function () {
   var connect = require('connect');
+  var serveStatic = require('serve-static');
+  var serveIndex = require('serve-index');
   var app = connect()
     .use(require('connect-livereload')({ port: 35729 }))
-    .use(connect.static('app'))
-    .use(connect.static('.tmp'))
-    .use(connect.directory('app'))
+    .use(serveStatic('app'))
+    .use(serveStatic('.tmp'))
+    .use(serveIndex('app'))
     .use('/vissense', function (req, res, next) {
 
        res.writeHead(201, "OK", {'Content-Type': 'text/plain'});
@@ -27,8 +29,9 @@ gulp.task('connect:src', function () {
 
 gulp.task('connect:dist', function () {
   var connect = require('connect');
+  var serveStatic = require('serve-static');
   var app = connect()
-    .use(connect.static('dist'));
+    .use(serveStatic('dist'));
 
   gulp.server = require('http').createServer(app)
     .listen(9000)
