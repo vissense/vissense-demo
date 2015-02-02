@@ -22,6 +22,10 @@
   "white": true,
   "globals": {
     "angular": false,
-    "_": false
+    "_": false,
+    "jQuery": false,
+    "VisSense": false,
+    "moment": false,
+    "console": false
   }
 }

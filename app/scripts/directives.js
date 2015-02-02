@@ -1,28 +1,13 @@
 ;(function(angular, _, undefined) {
-
-
-var newVisSenseFromElementId = function(elementId, vissense) {
-    var elementById = document.getElementById(elementId);
-    var vis = vissense(elementById, {
-
-    });
-    return vis;
-};
-
-var newMonitor = function(elementId, vissense, config) {
-    var vis = newVisSenseFromElementId(elementId, vissense);
-    return vis.monitor(config);
-};
+'use strict';
 
 angular.module('vissensePlayground')
-
-
 
 .directive('tbkHeader', function() {
   var d = {
     scope: {},
     templateUrl:'partials/navs/header.html',
-    controller: ['$scope', function($scope) {
+    controller: [function() {
 
     }],
     link: function($scope, $element) {
@@ -62,7 +47,7 @@ angular.module('vissensePlayground')
 })
 
 .directive('tbkDraggable', ['$document', function($document) {
-    return function(scope, element, attr) {
+    return function(scope, element/*, attr*/) {
       var startX = 0, startY = 0, x = 0, y = 0;
 
       element.on('mousedown', function(event) {

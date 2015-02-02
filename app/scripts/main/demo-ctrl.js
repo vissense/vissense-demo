@@ -1,4 +1,4 @@
-(function (window, document, angular,  _, moment, jQuery, undefined) {
+(function (window, document, angular, VisSense, VisSenseUtils, _, moment, jQuery, undefined) {
 'use strict';
 
 angular.module('vissensePlayground')
@@ -21,7 +21,7 @@ angular.module('vissensePlayground')
         }).start();
 
         var _update = function() {
-            $scope.percentiles = metrics.getMetric("percentage").percentiles();
+            $scope.percentiles = metrics.getMetric('percentage').percentiles();
         };
         var _debounce_update = _.debounce(function() {
           $scope.$apply(function() {
@@ -216,13 +216,12 @@ angular.module('vissensePlayground')
     }])
 
   .directive('tbkBoolLabel', [function () {
-    var lastId = 0;
     var d = {
       scope: {
         v: '=tbkBoolLabel'
       },
       replace:true,
-      controller: ['$scope', function($scope) {
+      controller: [function() {
       }],
       template: '<span class="label" data-ng-class="{\'label-danger\': !v, \'label-success\': v === true }">{{v}}</span>'
     };
@@ -259,7 +258,7 @@ angular.module('vissensePlayground')
 
         var _update = _.debounce(function() {
             $scope.$apply(function() {
-                $scope.timeHidden = round(metrics.getMetric('time.hidden').get())
+                $scope.timeHidden = round(metrics.getMetric('time.hidden').get());
                 $scope.timeVisible = round(metrics.getMetric('time.visible').get());
                 $scope.timeFullyVisible = round(metrics.getMetric('time.fullyvisible').get());
 
@@ -333,14 +332,14 @@ angular.module('vissensePlayground')
         }).start();
 
         $scope.data = [
-            { key: "hidden", y: 0 },
-            { key: "visible", y: 0 },
-            { key: "fully visible", y: 0 }
+            { key: 'hidden', y: 0 },
+            { key: 'visible', y: 0 },
+            { key: 'fully visible', y: 0 }
         ];
 
         var _update = _.debounce(function() {
             $scope.$apply(function() {
-                $scope.timeHidden = metrics.getMetric('time.hidden').get()
+                $scope.timeHidden = metrics.getMetric('time.hidden').get();
                 $scope.timeVisible = metrics.getMetric('time.visible').get();
                 $scope.timeFullyVisible = metrics.getMetric('time.fullyvisible').get();
 
@@ -350,9 +349,9 @@ angular.module('vissensePlayground')
                 $scope.percentageVisible = ($scope.timeVisible - $scope.timeFullyVisible) * 100 / $scope.duration;
                 $scope.percentageFullyVisible = $scope.timeFullyVisible * 100 / $scope.duration;
 
-                $scope.data.push({ key: "hidden", y: $scope.percentageHidden });
-                $scope.data.push({ key: "visible", y: $scope.percentageVisible });
-                $scope.data.push({ key: "fully visible", y: $scope.percentageFullyVisible });
+                $scope.data.push({ key: 'hidden', y: $scope.percentageHidden });
+                $scope.data.push({ key: 'visible', y: $scope.percentageVisible });
+                $scope.data.push({ key: 'fully visible', y: $scope.percentageFullyVisible });
 
                 //$scope.data[0] = ({ key: "hidden", y: $scope.percentageHidden });
                 //$scope.data[1] = ({ key: "visible", y: $scope.percentageVisible });
@@ -463,7 +462,7 @@ function ($scope) {
 function ($window, $document, $scope) {
 
   $scope.scrollToElement = function(elementId) {
-    $('html, body').animate({
+    jQuery('html, body').animate({
       scrollTop: jQuery('#' + elementId).offset().top
     }, 500);
     //$window.scrollTo(0, top);
@@ -483,12 +482,12 @@ function ($window, $document, $scope) {
       sectionElement.fadeTo(duration, opacity);
     };
 
-    var sectionMonitor = VisSense(sectionElement[0]).monitor({
+    var sectionMonitor = new VisSense(sectionElement[0]).monitor({
       // update when user scrolls or resizes the page
       strategy : VisSense.VisMon.Strategy.EventStrategy({ debounce: 50 }),
 
       percentagechange: function(newValue, oldValue, monitor) {
-          onChange(monitor)
+          onChange(monitor);
       }
     }).start();
 
@@ -514,19 +513,14 @@ function ($window, $scope, $interval, $timeout, tbkVisSense) {
 
 }])
 
-.controller('SingleCtrl', [
-'$scope',
-function ($scope) {
+.controller('SingleCtrl', [function () {
 
 }])
 
 .controller('FireCallbacksDemoCtrl', [
 '$log',
 '$scope',
-'$interval',
-'$timeout',
-'tbkVisSense',
-function ($log, $scope, $interval, $timeout, tbkVisSense) {
+function ($log, $scope) {
 
     $scope.model = {
         events: []
@@ -542,19 +536,13 @@ function ($log, $scope, $interval, $timeout, tbkVisSense) {
         $scope.model.events = _.last($scope.model.events, 100);
     };
 
-    var addEventDigest = function(name, description) {
-        $scope.$apply(function() {
-            addEvent(name, description);
-        });
-    };
-
     var element = document.getElementById('example1');
     var visobj = new VisSense(element);
 
     var vismon = visobj.monitor({
         strategy: new VisSense.VisMon.Strategy.PollingStrategy(1000),
         fullyvisible: function() {
-            addEvent('fullyvisible', 'Element became fully visible')
+            addEvent('fullyvisible', 'Element became fully visible');
         },
         hidden: function() {
             addEvent('hidden', 'Element became hidden');
@@ -583,4 +571,4 @@ function ($log, $scope, $interval, $timeout, tbkVisSense) {
 }]);
 
 
-})(window, document, angular, _, moment, jQuery);
+})(window, document, angular, VisSense, VisSense.Utils, _, moment, jQuery);

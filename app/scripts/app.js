@@ -1,5 +1,4 @@
 
-
 (function (window, document, angular,  _, jQuery, undefined) {
 'use strict';
 

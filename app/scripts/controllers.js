@@ -6,14 +6,11 @@ angular.module('vissensePlayground')
 .controller('GettingStartedCtrl', [
 '$window',
 '$scope',
-'$interval',
-'$timeout',
-'tbkVisSense',
-function ($window, $scope, $interval, $timeout, tbkVisSense) {
-    $scope.title = 'vissense.js'
+function ($window, $scope) {
+    $scope.title = 'vissense.js';
 
     $scope.scrollToElement = function(id) {
-         $('html, body').animate({
+         jQuery('html, body').animate({
              scrollTop: jQuery('#' + id).offset().top
          }, 500);
          //$window.scrollTo(0, top);
@@ -29,10 +26,6 @@ function ($window, $scope, $interval, $timeout, tbkVisSense) {
       bottom: 0
     }
   });
-
-
-}])
-;
-
+}]);
 
 })(window, document, angular, _, jQuery);

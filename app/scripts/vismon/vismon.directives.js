@@ -1,5 +1,5 @@
 ;(function(angular, _, undefined) {
-
+'use strict';
 
 var newVisSenseFromElementId = function(elementId, vissense) {
     var elementById = document.getElementById(elementId);
@@ -79,7 +79,7 @@ angular.module('vissensePlayground')
        scope: {
          elementId: '@tbkVismonPercentage'
        },
-       controller: ['$scope', '$interval', function($scope, $interval) {
+       controller: ['$scope', function($scope) {
          $scope.vismon = newMonitor($scope.elementId, tbkVisSense,{
             strategy: new tbkVisSense.VisMon.Strategy.PollingStrategy({
                 interval: 100
@@ -134,7 +134,7 @@ angular.module('vissensePlayground')
 
     return d;
   }])
-  .directive('tbkVismonFiftyOneTest', ['tbkVisSense', function (tbkVisSense) {
+  .directive('tbkVismonFiftyOneTest', [function () {
 
      var d = {
        scope: {
@@ -150,7 +150,7 @@ angular.module('vissensePlayground')
      return d;
    }])
 
-  .directive('tbkVismonSixtyOneTest', ['tbkVisSense', function (tbkVisSense) {
+  .directive('tbkVismonSixtyOneTest', [function () {
      var d = {
        scope: {
          elementId: '@tbkVismonSixtyOneTest'
@@ -170,7 +170,7 @@ angular.module('vissensePlayground')
       scope: {
         elementId: '@tbkVismonStateDebug'
       },
-      controller: ['$scope', '$interval', function($scope, $interval) {
+      controller: ['$scope', function($scope) {
         $scope.vismon = newVisSenseFromElementId($scope.elementId, tbkVisSense).monitor({
           strategy: new VisSense.VisMon.Strategy.PollingStrategy(),
           update: function(monitor) {
@@ -190,7 +190,7 @@ angular.module('vissensePlayground')
     return d;
   }])
 
-  .directive('tbkVissenseDebugUtils', ['tbkVisSense', function(tbkVisSense) {
+  .directive('tbkVissenseDebugUtils', [function() {
     var d = {
       scope: {
         elementId: '@tbkVissenseDebugUtils'

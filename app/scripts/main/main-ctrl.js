@@ -1,18 +1,11 @@
-(function (window, document, angular,  _, jQuery, undefined) {
+(function (window, document, angular) {
 'use strict';
 
 angular.module('vissensePlayground')
 
-.controller('MainCtrl', [
-'$window',
-'$scope',
-'$interval',
-'$timeout',
-'tbkVisSense',
-function ($window, $scope, $interval, $timeout, tbkVisSense) {
+.controller('MainCtrl', [function () {
 
-}])
-;
+}]);
 
 
-})(window, document, angular, _, jQuery);
+})(window, document, angular);
