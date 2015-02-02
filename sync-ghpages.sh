@@ -13,7 +13,7 @@ echo "Switching to branch gh-pages .."
 git checkout gh-pages
 
 echo "Copying from tmp-dist/ to ./ .."
-cp tmp-dist/app/* ./
+cp -R tmp-dist/app/* ./
 
 read -p "Enter a commit message: " commitMessage
 
