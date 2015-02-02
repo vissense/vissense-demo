@@ -5,3 +5,4 @@ dist/
 node_modules/
 .sass-cache/
 .tmp/
+sync-ghpages.sh
