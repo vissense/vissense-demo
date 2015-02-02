@@ -110,7 +110,7 @@ var startOpacityMonitor = function(elementId) {
     percentagechange: function(newValue, oldValue) {
       var difference = newValue - oldValue;
       var duration = 500 * Math.max(difference, 0.5);
-      var opacity = Math.max(newValue, 0.3);
+      var opacity = Math.max(newValue, 0.25);
       sectionElement.fadeTo(duration, opacity);
     }
   }).start();
@@ -132,3 +132,6 @@ if (/* user leaves the page, etc. */) {
 </code>
 
 </div>
+
+
+<br data-ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]"/>

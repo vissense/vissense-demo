@@ -476,7 +476,7 @@ function ($window, $document, $scope) {
       var newValue = monitor.state().percentage;
       var oldValue = (monitor.state().previous.percentage || 0);
       var difference = newValue - oldValue;
-      var duration = 500 * Math.max(difference, 0.5);
+      var duration = 500 * Math.max(difference, 0.25);
 
       // set the opacity to the actual visibility percentage
       var opacity = Math.max(newValue, 0.25);
@@ -485,10 +485,10 @@ function ($window, $document, $scope) {
 
     var sectionMonitor = VisSense(sectionElement[0]).monitor({
       // update when user scrolls or resizes the page
-      strategy : VisSense.VisMon.Strategy.EventStrategy({ debounce: 75 }),
+      strategy : VisSense.VisMon.Strategy.EventStrategy({ debounce: 50 }),
 
       percentagechange: function(newValue, oldValue, monitor) {
-        VisSense.Utils.defer(onChange(monitor), 75);
+          onChange(monitor)
       }
     }).start();
 
