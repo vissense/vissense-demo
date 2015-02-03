@@ -18,13 +18,15 @@
     "github-fork-ribbon-css": "~0.1.1",
     "angular-highlightjs": "~0.3.0",
     "tbk-angular-draggable": "theborakompanioni/tbk-angular-draggable#0.0.1",
-    "tbk-angular-github-version": "theborakompanioni/tbk-angular-github-version#0.0.1"
+    "tbk-angular-github-version": "theborakompanioni/tbk-angular-github-version#0.0.1",
+    "angular-vissense": "file:///home/void/workspace/vissense/angular-vissense/.git/"
   },
   "devDependencies": {
     "angular-mocks": "1.2.18"
   },
   "resolutions": {
     "d3": "~3.4.1",
-    "vissense": "0.2.1"
+    "vissense": "master",
+    "angular": "1.2.18"
   }
 }
