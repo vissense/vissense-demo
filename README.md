@@ -22,3 +22,10 @@ Contribute
 
 ### Suggest an example
 Suggestions for additional examples or even pull-request with new examples are welcomed.
+
+
+License
+-------
+
+The project is licensed under the MIT license. See
+[LICENSE](https://github.com/vissense/vissense-demo/blob/master/LICENSE) for details.

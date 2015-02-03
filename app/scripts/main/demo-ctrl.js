@@ -3,16 +3,14 @@
 
 angular.module('vissensePlayground')
 
-
-
   .directive('tbkVissenseReportPercentiles', [function () {
     var d = {
       scope: {
         elementId: '@tbkVissenseReportPercentiles'
       },
-      controller: ['$scope', '$interval', 'tbkVisSense', function($scope, $interval, tbkVisSense) {
+      controller: ['$scope', '$interval', 'VisSense', function($scope, $interval, VisSense) {
         var elementById = document.getElementById($scope.elementId);
-        var vis = tbkVisSense(elementById, {
+        var vis = new VisSense(elementById, {
 
         });
 
@@ -59,7 +57,7 @@ angular.module('vissensePlayground')
        scope: {
          elementId: '@tbkVissenseReportPercentagesLinechart'
        },
-       controller: ['$scope', '$interval', 'tbkVisSense', function($scope, $interval, tbkVisSense) {
+       controller: ['$scope', '$interval', 'VisSense', function($scope, $interval, VisSense) {
          $scope.id = 'vissense-report-percentages-linechart-' + lastId++;
 
          var intervalId = null;
@@ -68,7 +66,7 @@ angular.module('vissensePlayground')
          var startTime = VisSenseUtils.now();
 
          var elementById = document.getElementById($scope.elementId);
-         var vis = tbkVisSense(elementById, {});
+         var vis = VisSense(elementById, {});
 
 
          $scope.data = [{
@@ -129,117 +127,17 @@ angular.module('vissensePlayground')
      return d;
    }])
 
-  .directive('tbkVissenseCurrentPercentage', [function () {
-     var d = {
-       scope: {
-         elementId: '@tbkVissenseCurrentPercentage'
-       },
-       controller: ['$scope', '$document', '$interval',  'tbkVisSense', function($scope, $document, $interval, tbkVisSense) {
-           var elementById = $document[0].getElementById($scope.elementId);
-           var vis = tbkVisSense(elementById, {});
-
-           var _update = function() {
-             $scope.percentage = vis.percentage();
-           };
-
-           var intervalId = $interval(_update, 200);
-
-           $scope.$on('$destroy', function() {
-             $interval.cancel(intervalId);
-           });
-       }],
-       template: '<span>{{percentage * 100 | number:0}}%</span>'
-     };
-
-     return d;
-   }])
-
-  .directive('tbkVissenseReportPercentages', [function () {
-     var d = {
-       scope: {
-         elementId: '@tbkVissenseReportPercentages'
-       },
-       controller: ['$scope', '$interval', 'tbkVisSense', function($scope, $interval, tbkVisSense) {
-
-         var elementById = document.getElementById($scope.elementId);
-         var vis = tbkVisSense(elementById, {});
-
-         var metrics = vis.metrics({
-           strategy: new VisSense.VisMon.Strategy.PollingStrategy({interval:100})
-         }).start();
-
-         var _update = function() {
-             $scope.percentage = {
-                 current: metrics.getMetric('percentage').get(),
-                 max: metrics.getMetric('percentage.max').get(),
-                 min: metrics.getMetric('percentage.min').get()
-             };
-         };
-         var _debounce_update = _.debounce(function() {
-           $scope.$apply(function() {
-             _update();
-           });
-         }, 100);
-
-         var intervalId = $interval(_debounce_update, 200);
-
-         $scope.$on('$destroy', function() {
-            metrics.stop();
-            $interval.cancel(intervalId);
-         });
-
-       }],
-       template: '<div style="background-color: white">' +
-         '<div>current: {{percentage.current * 100 | number:2}}%</div>' +
-         '<div>max: {{percentage.max * 100 | number: 2 }}%</div>' +
-         '<div>min: {{percentage.min * 100 | number: 2 }}%</div>' +
-       '</div>'
-     };
-
-     return d;
-   }])
-
-    .directive('tbkDefaultDraggableElement', [function () {
-      var d = {
-        scope: {
-          elementId: '@tbkDefaultDraggableElement'
-        },
-        controller: ['$scope', function($scope) {
-          $scope.model = {
-            elementId: $scope.elementId
-          };
-        }],
-        templateUrl: 'partials/directives/default-draggable-element.html'
-      };
-
-      return d;
-    }])
-
-  .directive('tbkBoolLabel', [function () {
-    var d = {
-      scope: {
-        v: '=tbkBoolLabel'
-      },
-      replace:true,
-      controller: [function() {
-      }],
-      template: '<span class="label" data-ng-class="{\'label-danger\': !v, \'label-success\': v === true }">{{v}}</span>'
-    };
-
-    return d;
-  }])
-
   .directive('tbkVissenseReportTimesBarchart', [function () {
     var lastId = 0;
     var d = {
       scope: {
         elementId: '@tbkVissenseReportTimesBarchart'
       },
-      controller: ['$scope', '$window', '$interval', 'tbkVisSense', function($scope, $window, $interval, tbkVisSense) {
+      controller: ['$scope', '$window', '$interval', 'VisSense', function($scope, $window, $interval, VisSense) {
         $scope.id = 'vissense-report-times-barchart-' + lastId++;
 
         var elementById = document.getElementById($scope.elementId);
-        var visobj = tbkVisSense(elementById, {});
+        var visobj = new VisSense(elementById, {});
 
         var metrics = visobj.metrics({
           strategy: new VisSense.VisMon.Strategy.PollingStrategy({interval:100}),
@@ -319,11 +217,11 @@ angular.module('vissensePlayground')
       scope: {
         elementId: '@tbkVissenseReportPercentagesPiechart'
       },
-      controller: ['$scope', '$window', '$interval', 'tbkVisSense', function($scope, $window, $interval, tbkVisSense) {
+      controller: ['$scope', '$window', '$interval', 'VisSense', function($scope, $window, $interval, VisSense) {
         $scope.id = 'vissense-report-percentages-piechart-' + lastId++;
 
         var elementById = document.getElementById($scope.elementId);
-        var visobj = tbkVisSense(elementById, {});
+        var visobj = new VisSense(elementById, {});
 
         var metrics = visobj.metrics({
           strategy: new VisSense.VisMon.Strategy.PollingStrategy({interval:100}),
@@ -402,53 +300,6 @@ angular.module('vissensePlayground')
     return d;
   }])
 
-  .directive('tbkVissenseVisibilityInfocard', [function () {
-    var d = {
-      scope: {
-        elementId: '@tbkVissenseVisibilityInfocard'
-      },
-      controller: ['$scope', '$window', '$interval', 'tbkVisSense', function($scope, $window, $interval, tbkVisSense) {
-
-        var elementById = document.getElementById($scope.elementId);
-
-        var visobj = tbkVisSense(elementById, {});
-
-        var metrics = visobj.metrics({
-          strategy: new VisSense.VisMon.Strategy.PollingStrategy({interval:100})
-        }).start();
-
-        var _update = _.debounce(function() {
-          $scope.$apply(function() {
-            $scope.timeHidden = metrics.getMetric('time.hidden').get();
-            $scope.timeVisible = metrics.getMetric('time.visible').get();
-            $scope.timeFullyVisible = metrics.getMetric('time.fullyvisible').get();
-            $scope.timeRelativeVisible = metrics.getMetric('time.relativeVisible').get();
-            $scope.duration = metrics.getMetric('time.duration').get();
-
-            $scope.percentage = {
-              current: metrics.getMetric('percentage').get(),
-              max: metrics.getMetric('percentage.max').get(),
-              min: metrics.getMetric('percentage.min').get()
-            };
-          });
-        }, 0);
-
-        var intervalId = $interval(_update, 200);
-
-        $scope.$on('$destroy', function() {
-          metrics.stop();
-          $interval.cancel(intervalId);
-        });
-
-      }],
-      templateUrl : 'partials/directives/visibility-infocard.html'
-    };
-
-    return d;
-  }])
-
-
-
 .controller('DemoCtrl', [
 '$scope',
 function ($scope) {
@@ -459,7 +310,8 @@ function ($scope) {
 '$window',
 '$document',
 '$scope',
-function ($window, $document, $scope) {
+'VisSense',
+function ($window, $document, $scope, VisSense) {
 
   $scope.scrollToElement = function(elementId) {
     jQuery('html, body').animate({
@@ -501,15 +353,7 @@ function ($window, $document, $scope) {
   changeOpacityOnPercentageChangeOfElementWithId('plugins-section');
 }])
 
-.controller('TrackVisiblityDemoCtrl', [
-'$window',
-'$scope',
-'$interval',
-'$timeout',
-'tbkVisSense',
-function ($window, $scope, $interval, $timeout, tbkVisSense) {
-
-	$scope.tbkVisSense = tbkVisSense;
+.controller('TrackVisiblityDemoCtrl', [function () {
 
 }])
 
@@ -520,7 +364,8 @@ function ($window, $scope, $interval, $timeout, tbkVisSense) {
 .controller('FireCallbacksDemoCtrl', [
 '$log',
 '$scope',
-function ($log, $scope) {
+'VisSense',
+function ($log, $scope, VisSense) {
 
     $scope.model = {
         events: []
@@ -551,8 +396,8 @@ function ($log, $scope) {
             addEvent('visible', 'Element became visible');
         },
         update: function() {
-            setTimeout(function() { $scope.$digest(); });
             $log.info('update!');
+            setTimeout(function() { $scope.$digest(); });
         },
         percentagechange: function(newValue, oldValue) {
             var o = angular.isNumber(oldValue) ? Math.round(oldValue * 1000) / 10: '?';

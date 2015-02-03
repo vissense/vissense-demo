@@ -7,7 +7,7 @@ angular.module('vissensePlayground')
 '$window',
 '$scope',
 function ($window, $scope) {
-    $scope.title = 'vissense.js';
+    $scope.title = 'VisSense.js';
 
     $scope.scrollToElement = function(id) {
          jQuery('html, body').animate({

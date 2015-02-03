@@ -3,6 +3,22 @@
 
 angular.module('vissensePlayground')
 
+.directive('tbkDefaultDraggableElement', [function () {
+  var d = {
+    scope: {
+      elementId: '@tbkDefaultDraggableElement'
+    },
+    controller: ['$scope', function($scope) {
+      $scope.model = {
+        elementId: $scope.elementId
+      };
+    }],
+    templateUrl: 'partials/directives/default-draggable-element.html'
+  };
+
+  return d;
+}])
+
 .directive('tbkHeader', function() {
   var d = {
     scope: {},

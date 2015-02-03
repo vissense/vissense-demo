@@ -1,8 +1,10 @@
 
-(function (window, document, angular,  _, jQuery, undefined) {
+(function (angular) {
 'use strict';
 
 angular.module('vissensePlayground', [
+'angular-vissense',
+'angular-vissense.directives.debug',
 'tbk.draggable',
 'tbk.githubVersion',
 'restangular',
@@ -16,11 +18,7 @@ angular.module('vissensePlayground', [
     return items.slice().reverse();
   };
 })
-
-.factory('tbkVisSense', ['$window', function($window) {
-	return $window.VisSense;
-}])
 ;
 
 
-})(window, document, angular, _, jQuery);
+})(angular);
