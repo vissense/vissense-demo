@@ -46,36 +46,6 @@ angular.module('vissensePlayground')
   return d;
 })
 
-.directive('tbkDraggable', ['$document', function($document) {
-    return function(scope, element/*, attr*/) {
-      var startX = 0, startY = 0, x = 0, y = 0;
-
-      element.on('mousedown', function(event) {
-        // Prevent default dragging of selected content
-        event.preventDefault();
-        startX = event.pageX - x;
-        startY = event.pageY - y;
-        $document.on('mousemove', mousemove);
-        $document.on('mouseup', mouseup);
-      });
-
-      function mousemove(event) {
-        y = event.pageY - startY;
-        x = event.pageX - startX;
-        element.css({
-          top: y + 'px',
-          left:  x + 'px'
-        });
-      }
-
-      function mouseup() {
-        $document.off('mousemove', mousemove);
-        $document.off('mouseup', mouseup);
-      }
-    };
-  }])
-
-
 .directive('tbkGithubForkRibbon', function() {
   var d = {
     scope: {
@@ -99,36 +69,7 @@ angular.module('vissensePlayground')
   return d;
 })
 
-  .directive('tbkGithubVersion', function() {
-  var d = {
-    scope: {
-      repo: '@tbkGithubVersion'
-    },
-    template: '<span>{{version}}',
-    controller: ['$scope', '$http', function($scope, $http) {
-      $scope.version = '?';
-      $http.get('https://api.github.com/repos/' + $scope.repo + '/git/refs/tags', {
-        cache: true
-      }).success(function(data) {
-        if(angular.isArray(data) && data.length > 0) {
-          var latest = data[data.length - 1];
-          var versionIndex = latest.ref.search(/(\d(\.)?){3}$/);
-          if(versionIndex > -1) {
-            var version = latest.ref.substring(versionIndex, latest.ref.length);
-            $scope.version = version;
-          }
-        }
-      });
-    }],
-    link: function($scope, $element) {
-      $element.addClass('tbk-github-version');
-    }
-  };
-
-  return d;
-})
-
-  .directive('tbkDefaultDemoNavigation', function() {
+.directive('tbkDefaultDemoNavigation', function() {
     /*
      * example
      * list: [{

@@ -3,6 +3,8 @@
 'use strict';
 
 angular.module('vissensePlayground', [
+'tbk.draggable',
+'tbk.githubVersion',
 'restangular',
 'vissense.playground.states',
 'nvd3ChartDirectives',
