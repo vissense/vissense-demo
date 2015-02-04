@@ -116,6 +116,9 @@ angular.module('vissensePlayground')
         }, {
           text: 'track sections',
           path: '/demos/demo-track-sections'
+        }, {
+          text: 'angular directive: vissense-monitor',
+          path: '/demos/demo-angular-vissense-monitor'
         }];
       }],
       link: function($scope, $element) {

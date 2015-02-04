@@ -50,6 +50,11 @@ angular.module('vissense.playground.states', [
     url: '/demo-percentage-time-test',
     templateUrl: 'partials/demos/demo_percentage_time_test.html',
     controller: 'SingleCtrl'
+  })
+  .state('demos.angular-vissense-monitor', {
+    url: '/demo-angular-vissense-monitor',
+    templateUrl: 'partials/demos/demo_angular_vissense_monitor.html',
+    controller: 'AngularVissenseMonitorDemoCtrl'
   });
 
   $urlRouterProvider.otherwise('/demos/overview');

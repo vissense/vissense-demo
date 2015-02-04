@@ -67,9 +67,15 @@
       </table>
     </div>
 
-
     <div style="margin-bottom: 20px;">
-      <div id="example1" class="default-draggable-element" data-tbk-draggable>
+      <div id="example1" class="default-draggable-element"
+           data-tbk-draggable
+           data-vissense-monitor
+           on-visibilitychange="addEvent('visibilitychange', 'Element became hidden')"
+           on-percentagechange="addPercentageEvent(newValue, oldValue)"
+           on-hidden="addEvent('hidden', 'Element became hidden')"
+           on-visible="addEvent('visible', 'Element became visible')"
+           on-fullyvisible="addEvent('fullyvisible', 'Element became fully visible')">
         <div tbk-default-draggable-element="example1"></div>
       </div>
     </div>
