@@ -44,17 +44,20 @@ angular.module('vissense.playground.states', [
   .state('demos.draggable-element', {
     url: '/single',
     templateUrl: 'partials/demos/demo_draggable_element.html',
-    controller: 'SingleCtrl'
   })
   .state('demos.percentage-time-test', {
     url: '/demo-percentage-time-test',
     templateUrl: 'partials/demos/demo_percentage_time_test.html',
-    controller: 'SingleCtrl'
   })
   .state('demos.angular-vissense-monitor', {
     url: '/demo-angular-vissense-monitor',
     templateUrl: 'partials/demos/demo_angular_vissense_monitor.html',
     controller: 'AngularVissenseMonitorDemoCtrl'
+  })
+  .state('demos.angular-many-monitors', {
+    url: '/demo-angular-many-monitors',
+    templateUrl: 'partials/demos/demo_angular_many_monitors.html',
+    controller: 'ManyMonitorsDemoCtrl'
   });
 
   $urlRouterProvider.otherwise('/demos/overview');

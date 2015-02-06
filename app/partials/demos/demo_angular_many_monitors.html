@@ -1,0 +1,53 @@
+
+<section data-tbk-default-demo-navigation></section>
+
+<header class="container">
+  <h2>[Demo] Angular Directives: vissense-monitor</h2>
+</header>
+<style>
+.monitor {
+  margin: 30px;
+  min-height: 100px;
+  min-width: 100px
+}
+
+</style>
+
+<div class="container" id="draggable-example-container" style="margin-top: 30px;">
+  <div class="monitor-container" data-ng-init="model.state = '?'">
+    <div class="monitor" vissense-monitor
+         on-hidden="model.state = 'hidden'; event('hidden', $monitor);"
+         on-fullyvisible="model.state = 'fully visible'; event('fully', $monitor);">
+     this element is currently {{ model.state }}
+    </div>
+
+    this element is currently {{ model.state }}
+<button ng-click="debug()">Click</button>
+{{ model.debugtext }}
+  </div>
+
+<div data-ng-show="model.state = 'hidden'">
+
+      <p>Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. </p>
+
+
+</div>
+  <!-- div class="monitor-container" data-ng-repeat="i in [1,2]">
+    <div class="monitor" vissense-monitor
+         on-hidden="model.state = 'hidden'"
+         on-visible="model.state = 'visible'"
+         on-fullyvisible="model.state = 'fully visible'">
+     this element is currently {{ model.state }}
+    </div>
+  </div -->
+
+  <div class="lorem-ipsum">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. </p>
+
+  </div>
+  <h3>Code</h3>
+  <code data-hljs>
+  </code>
+
+  <br data-ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13]"/>
+</div>

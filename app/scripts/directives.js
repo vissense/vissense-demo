@@ -119,6 +119,9 @@ angular.module('vissensePlayground')
         }, {
           text: 'angular directive: vissense-monitor',
           path: '/demos/demo-angular-vissense-monitor'
+        }, {
+          text: 'angular directive: vissense-monitor (many instances)',
+          path: '/demos/demo-angular-many-monitors'
         }];
       }],
       link: function($scope, $element) {
