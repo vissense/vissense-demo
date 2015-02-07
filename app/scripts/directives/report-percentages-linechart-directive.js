@@ -18,7 +18,7 @@
           var startTime = VisSenseUtils.now();
 
           var elementById = document.getElementById($scope.elementId);
-          var vis = VisSense(elementById, {});
+          var vis = new VisSense(elementById, {});
 
 
           $scope.data = [{

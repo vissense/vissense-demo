@@ -5,19 +5,15 @@
 
     .controller('ManyMonitorsDemoCtrl', [
       '$scope',
-      function ($scope) {
-        $scope.model = {};
-
-        $scope.model.debugtext = 'text';
-        $scope.debug = function() {
-          $scope.model.debugtext = 'hello' +
-            $scope.model.debugtext;
+      '$log',
+      function ($scope, $log) {
+        $scope.model = {
+          monitorCount: 42,
+          monitorCountMax: 200
         };
 
-        $scope.event = function(description, args) {
-          console.log(description + ' - ' + args);
-          $scope.model.state = $scope.model.state + '+';
-          $scope.$digest();
+        $scope.model.logEvent = function(description) {
+          $log.info(description);
         };
       }]);
 

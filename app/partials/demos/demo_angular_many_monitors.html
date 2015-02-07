@@ -1,53 +1,117 @@
-
 <section data-tbk-default-demo-navigation></section>
 
 <header class="container">
   <h2>[Demo] Angular Directives: vissense-monitor</h2>
 </header>
 <style>
-.monitor {
-  margin: 30px;
-  min-height: 100px;
-  min-width: 100px
-}
+  input#many-monitors-count {
+    padding: 13px;
+    min-width: 330px;
+    margin: 3px;
+    font-size: 2em;
+  }
+
+  .vissense-monitor {
+    margin: 10px;
+    padding: 10px;
+    height: 100px;
+    width: 100px;
+    float: left;
+
+    border: 1px solid #333;
+  }
+
+  .vissense-monitor-hidden {
+    background-color: red;
+  }
+
+  .vissense-monitor-visible {
+    background-color: orange;
+  }
+
+  .vissense-monitor-fullyvisible {
+    background-color: green;
+  }
 
 </style>
 
+<section class="styleguide__editorial-header">
+  <div class="editorial-header">
+    <div class="container">
+      <p class="editorial-header__excerpt">
+        This pages demonstrates the dynamic observation of volatile elements.
+        You can create and destroy monitor instances with the input form below.
+
+        Take a look at the console while playing with the value and/or scrolling around.
+      </p>
+    </div>
+  </div>
+</section>
 <div class="container" id="draggable-example-container" style="margin-top: 30px;">
-  <div class="monitor-container" data-ng-init="model.state = '?'">
-    <div class="monitor" vissense-monitor
-         on-hidden="model.state = 'hidden'; event('hidden', $monitor);"
-         on-fullyvisible="model.state = 'fully visible'; event('fully', $monitor);">
-     this element is currently {{ model.state }}
+  <div class="clearfix">
+    <form>
+      <label for="many-monitors-count">Active monitors: </label>
+      <input id="many-monitors-count" class="" type="number" data-ng-model="model.monitorCount"
+             min="1"
+             max="{{model.monitorCountMax}}"
+             data-ng-max="{{model.monitorCountMax}}">
+    </form>
+    <div class="monitor-container" data-ng-repeat="i in [] | range:model.monitorCount">
+      <div vissense-monitor
+           on-fullyvisible="model.logEvent('fullyvisible')"
+           on-visible="model.logEvent('visible')"
+           on-hidden="model.logEvent('hidden')">
+      </div>
     </div>
-
-    this element is currently {{ model.state }}
-<button ng-click="debug()">Click</button>
-{{ model.debugtext }}
   </div>
 
-<div data-ng-show="model.state = 'hidden'">
+  <br data-ng-repeat="i in [] | range:5" />
 
-      <p>Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. </p>
+  <div class="container">
 
+    <h3>Code</h3>
+    <section class="styleguide__editorial-header">
+      <div class="editorial-header">
+        <div class="container">
+          <p class="editorial-header__excerpt">
+            The following example is made with
+            <a href="https://github.com/vissense/angular-vissense">angular-vissense</a> -
+            but is also quite simple to recreate with or without any other framework.
+          </p>
+        </div>
+      </div>
 
-</div>
-  <!-- div class="monitor-container" data-ng-repeat="i in [1,2]">
-    <div class="monitor" vissense-monitor
-         on-hidden="model.state = 'hidden'"
-         on-visible="model.state = 'visible'"
-         on-fullyvisible="model.state = 'fully visible'">
-     this element is currently {{ model.state }}
-    </div>
-  </div -->
+    <h4>html</h4>
+    <code data-hljs>
+      <form>
+        <label>Amount: </label>
+        <input type="number" data-ng-model="model.monitorCount" min="1" max="200">
+      </form>
 
-  <div class="lorem-ipsum">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. </p>
+      <div class="monitor-container" data-ng-repeat="i in [] | range:model.monitorCount">
+        <div vissense-monitor
+             on-fullyvisible="model.logEvent('fullyvisible')"
+             on-visible="model.logEvent('visible')"
+             on-hidden="model.logEvent('hidden')">
+        </div>
+      </div>
+    </code>
+
+    <h4>controller</h4>
+    <code data-hljs>
+...
+.controller('ManyMonitorsDemoCtrl', ['$scope','$log',
+function ($scope, $log) {
+  $scope.model = {
+    monitorCount: 42
+  };
+
+  $scope.model.logEvent = function(description) {
+    $log.info(description);
+  };
+}]);
+</code>
 
   </div>
-  <h3>Code</h3>
-  <code data-hljs>
-  </code>
 
-  <br data-ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13]"/>
 </div>
