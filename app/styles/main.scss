@@ -7,6 +7,23 @@
   padding: 0.2em 0;
 }
 
+pre.prettyprint {
+  font-size: 13px !important;
+  line-height: 1.42857 !important;
+}
+pre.prettyprint .tag {
+  font-size: 13px !important;
+  line-height: 1.42857 !important;
+  padding-top: 0em !important;
+}
+pre.prettyprint .tag:hover {
+  color: inherit;
+}
+
+pre.prettyprint .tag::before {
+  content: '';
+}
+
 hr {
   border-color: #cfcfcf;
 }
@@ -600,4 +617,3 @@ main {
     display:none;
   }
 }
-

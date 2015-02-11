@@ -19,7 +19,8 @@
     "angular-highlightjs": "~0.3.0",
     "tbk-angular-draggable": "theborakompanioni/tbk-angular-draggable#0.0.1",
     "tbk-angular-github-version": "theborakompanioni/tbk-angular-github-version#0.0.1",
-    "angular-vissense": "vissense/angular-vissense#0.0.1"
+    "angular-vissense": "vissense/angular-vissense#0.0.1",
+    "google-code-prettify": "~1.0.3"
   },
   "devDependencies": {
     "angular-mocks": "1.2.18"

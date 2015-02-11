@@ -82,25 +82,24 @@
       </div>
 
     <h4>html</h4>
-    <code data-hljs>
-      <form>
-        <label>Amount: </label>
-        <input type="number" data-ng-model="model.monitorCount" min="1" max="200">
-      </form>
+<pre data-tbk-code-prettify="" data-lang="html">
+&lt;form&gt;
+  &lt;label>Amount: &lt;/label&gt;
+  &lt;input type="number" data-ng-model="model.monitorCount" min="1" max="200"&gt;
+&lt;/form&gt;
 
-      <div class="monitor-container" data-ng-repeat="i in [] | range:model.monitorCount">
-        <div vissense-monitor
-             on-fullyvisible="model.logEvent('fullyvisible')"
-             on-visible="model.logEvent('visible')"
-             on-hidden="model.logEvent('hidden')">
-        </div>
-      </div>
-    </code>
+&lt;div class="monitor-container" data-ng-repeat="i in [] | range:model.monitorCount"&gt;
+  &lt;div vissense-monitor
+       on-fullyvisible="model.logEvent('fullyvisible')"
+       on-visible="model.logEvent('visible')"
+       on-hidden="model.logEvent('hidden')"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
 
     <h4>controller</h4>
-    <code data-hljs>
-...
-.controller('ManyMonitorsDemoCtrl', ['$scope','$log',
+<pre data-tbk-code-prettify="">
+module.controller('ManyMonitorsDemoCtrl', ['$scope','$log',
 function ($scope, $log) {
   $scope.model = {
     monitorCount: 42
@@ -110,7 +109,7 @@ function ($scope, $log) {
     $log.info(description);
   };
 }]);
-</code>
+</pre>
 
   </div>
 
