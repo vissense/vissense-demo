@@ -108,7 +108,7 @@ var startOpacityMonitor = function(elementId) {
     // update when user scrolls or resizes the page
     strategy : VisSense.VisMon.Strategy.EventStrategy({ debounce: 100 }),
 
-    percentagechange: function(newValue, oldValue) {
+    percentagechange: function(monitor, newValue, oldValue) {
       var difference = newValue - oldValue;
       var duration = 500 * Math.max(difference, 0.5);
       var opacity = Math.max(newValue, 0.25);

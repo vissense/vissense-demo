@@ -31,7 +31,7 @@
       <p class="g-wide--pull-1">
         Move the element around to update the table content with triggered events.
         Notice the behaviour of the "visible" event - it will always be triggered
-        when transitioning from "hidden" but it wont fire when
+        when transitioning from "hidden" but it won't fire when
         changing from "fullyvisible" to "visible" (while instead a "visibilitychange" event will be triggered).
     </div>
   </div>
@@ -55,6 +55,8 @@
         <tr data-ng-repeat="event in model.events | reverse" class="log alert" data-ng-class="{
                   'color--danger': event.name == 'hidden',
                   'color--green': event.name == 'fullyvisible',
+                  'color--blue': event.name == 'start',
+                  'color--blue': event.name == 'stop',
                   'color--yellow': event.name == 'visible',
                   'color--highlight': event.name == 'visibilitychange',
                   'color--learning': event.name == 'percentagechange'
@@ -71,6 +73,8 @@
       <div id="example1" class="default-draggable-element"
            data-tbk-draggable
            data-vissense-monitor
+           on-start="addEvent('start', 'Start monitoring element')"
+           on-stop="addEvent('stop', 'Stop monitoring element')"
            on-visibilitychange="addEvent('visibilitychange', 'Element became hidden')"
            on-percentagechange="addPercentageEvent(newValue, oldValue)"
            on-hidden="addEvent('hidden', 'Element became hidden')"
@@ -87,13 +91,17 @@ var element = document.getElementById('example1');
 var visobj = new VisSense(element);
 
 var vismon = visobj.monitor({
-  strategy: new VisSense.VisMon.Strategy.PollingStrategy(1000),
-  fullyvisible: function() { ... },
-  hidden: function() { ... },
-  visible: function() { ... },
-  update: function() { ... },
-  percentagechange: function(newValue, oldValue) { ... },
-  visibilitychange: function() { ... }
+  strategy: new VisSense.VisMon.Strategy.PollingStrategy({
+    interval: 1000
+  }),
+  start: function(monitor) { ... },
+  stop: function(monitor) { ... },
+  update: function(monitor) { ... },
+  percentagechange: function(monitor, newValue, oldValue) { ... },
+  visibilitychange: function(monitor) { ... },
+  hidden: function(monitor) { ... },
+  visible: function(monitor) { ... },
+  fullyvisible: function(monitor) { ... }
 }).start();
 </pre>
 

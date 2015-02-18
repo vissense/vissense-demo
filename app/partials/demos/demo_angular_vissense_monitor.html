@@ -40,6 +40,8 @@
   <div id="example1" class="default-draggable-element"
        data-tbk-draggable
        data-vissense-monitor
+       on-start="addEvent('start', 'Start monitoring element')"
+       on-stop="addEvent('stop', 'Stop monitoring element')"
        on-visibilitychange="addEvent('visibilitychange', 'Element became hidden')"
        on-percentagechange="addPercentageEvent(newValue, oldValue)"
        on-hidden="addEvent('hidden', 'Element became hidden')"
@@ -55,6 +57,8 @@
   <h3>Code</h3>
 <pre data-tbk-code-prettify="" data-lang="html">
 &lt;div data-vissense-monitor
+   on-start="addEvent('start', 'Start monitoring element')"
+   on-stop="addEvent('stop', 'Stop monitoring element')"
    on-visibilitychange="addEvent('visibilitychange', 'Element became hidden')"
    on-percentagechange="addPercentageEvent(newValue, oldValue)"
    on-hidden="addEvent('hidden', 'Element became hidden')"

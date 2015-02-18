@@ -65,16 +65,22 @@
   <h3>Code</h3>
   <pre data-tbk-code-prettify="">
 var element = document.getElementById('myElement');
-var visobj = VisSense(element, {
-  hidden: 0.1,
-  fullyvisible: 0.9
-});
 
-var vismon = visobj.monitor({
-  strategy: new VisSense.VisMon.Strategy.PollingStrategy()
-}).start();
+var monitor = VisSense(element, {
+    hidden: 0.1,
+    fullyvisible: 0.9
+  }).monitor({
+    strategy: [
+      new VisSense.VisMon.Strategy.PollingStrategy({
+        interval: 1000
+      }), new VisSense.VisMon.Strategy.EventStrategy({
+        debounce: 50
+      })
+    ]
+  })
+  .start();
 
-vismon.state();
+monitor.state();
   </pre>
 
   <br data-ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]"/>

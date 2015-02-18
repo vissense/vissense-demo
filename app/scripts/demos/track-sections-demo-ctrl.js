@@ -20,9 +20,9 @@
         var changeOpacityOnPercentageChangeOfElementWithId = function (elementId) {
           var sectionElement = jQuery('#' + elementId);
 
-          var onChange = function (monitor) {
-            var newValue = monitor.state().percentage;
-            var oldValue = (monitor.state().previous.percentage || 0);
+          var onChange = function (state) {
+            var newValue = state.percentage;
+            var oldValue = (state.previous.percentage || 0);
             var difference = newValue - oldValue;
             var duration = 500 * Math.max(difference, 0.25);
 
@@ -35,8 +35,8 @@
             // update when user scrolls or resizes the page
             strategy: VisSense.VisMon.Strategy.EventStrategy({debounce: 50}),
 
-            percentagechange: function (newValue, oldValue, monitor) {
-              onChange(monitor);
+            percentagechange: function (monitor) {
+              onChange(monitor.state());
             }
           }).start();
 
