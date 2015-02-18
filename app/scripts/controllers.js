@@ -2,7 +2,10 @@
 'use strict';
 
 angular.module('vissensePlayground')
+  .controller('NoopCtrl', [
+    function ($window, $scope) {
 
+    }])
 .controller('GettingStartedCtrl', [
 '$window',
 '$scope',

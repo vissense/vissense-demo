@@ -11,11 +11,16 @@ angular.module('vissense.playground.states', [
     $urlRouterProvider.when('/', '/demos/overview');
 
     $stateProvider
-  .state('home', {
-    url: '/',
-    templateUrl: 'partials/demos.html',
-    controller: 'DemoCtrl'
-  })
+    .state('home', {
+      url: '/',
+      templateUrl: 'partials/demos.html',
+      controller: 'DemoCtrl'
+    })
+    .state('download', {
+      url: '/download',
+      templateUrl: 'partials/download.html',
+      controller: 'NoopCtrl'
+    })
   .state('demos', {
     abstract: true,
     url:'/demos',
