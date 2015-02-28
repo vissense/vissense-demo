@@ -1,4 +1,41 @@
+/******************/
+.visible-xs, .visible-sm, .visible-md, .visible-lg {
+  display: none !important;
+}
 
+@media (min-width: 1200px) {
+  .hidden-lg {
+    display: none !important;
+  }
+  .visible-lg {
+    display: block !important;
+  }
+}
+@media (max-width: 767px) {
+  .hidden-xs {
+    display: none !important;
+  }
+  .visible-xs {
+    display: block !important;
+  }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  .hidden-sm {
+    display: none !important;
+  }
+  .visible-sm {
+    display: block !important;
+  }
+}
+@media (max-width: 1199px) and (min-width: 992px) {
+  .hidden-md {
+    display: none !important;
+  }
+  .visible-md {
+    display: block !important;
+  }
+}
+/******************/
 
 .browsehappy {
   margin: 0.2em 0;

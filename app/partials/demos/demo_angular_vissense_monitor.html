@@ -8,32 +8,56 @@
 <div class="container" id="draggable-example-container" style="margin-top: 30px;">
 
 <style>
-#alert-container {
+#alert-container-container {
+  font-size: 0.8em;
+}
+
+.alert-container-xs,
+.alert-container-sm {
+}
+
+.alert-container-md,
+.alert-container-lg {
   z-index: 999;
   position: fixed;
   right: 10px;
   top:10px;
   width: 380px;
-  font-size: 0.8em;
 }
-#alert-container .alert {
+
+#alert-container-container .alert {
   margin: 10px;
   padding: 3px;
-  box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 1px 1px 1px rgba(99, 99, 99, 0.4);
   background-color: rgba(242,242,242,0.9);
 }
 </style>
-<div id="alert-container">
-  <div class="alert" data-ng-repeat="event in model.events | reverse" class="log alert" data-ng-class="{
-    'color--danger': event.name == 'hidden',
-    'color--green': event.name == 'fullyvisible',
-    'color--yellow': event.name == 'visible',
-    'color--highlight': event.name == 'visibilitychange',
-    'color--learning': event.name == 'percentagechange'
-  }">
-    <div><i class="fa fa-clock-o"></i> {{event.time | date:'MMM d, y h:mm:ss.sss a'}}</div>
-    <div>{{event.name}}</div>
-    <div>{{event.description}}</div>
+<div id="alert-container-container">
+  <div class="alert-container-md visible-md visible-lg">
+    <div class="alert" data-ng-repeat="event in model.events | reverse" class="log alert" data-ng-class="{
+      'color--danger': event.name == 'hidden',
+      'color--green': event.name == 'fullyvisible',
+      'color--yellow': event.name == 'visible',
+      'color--highlight': event.name == 'visibilitychange',
+      'color--learning': event.name == 'percentagechange'
+    }">
+      <div><i class="fa fa-clock-o"></i> {{event.time | date:'MMM d, y h:mm:ss.sss a'}}</div>
+      <div>{{event.name}}</div>
+      <div>{{event.description}}</div>
+    </div>
+  </div>
+  <div class="alert-container-sm visible-xs visible-sm">
+    <div class="alert" data-ng-repeat="event in model.events | reverse" class="log alert" data-ng-class="{
+      'color--danger': event.name == 'hidden',
+      'color--green': event.name == 'fullyvisible',
+      'color--yellow': event.name == 'visible',
+      'color--highlight': event.name == 'visibilitychange',
+      'color--learning': event.name == 'percentagechange'
+    }">
+      <div><i class="fa fa-clock-o"></i> {{event.time | date:'MMM d, y h:mm:ss.sss a'}}</div>
+      <div>{{event.name}}</div>
+      <div>{{event.description}}</div>
+    </div>
   </div>
 </div>
 
