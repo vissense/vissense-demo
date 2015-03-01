@@ -233,6 +233,33 @@ angular.module('vissensePlayground')
 
     return d;
   })
+
+  .directive('tbkVissenseUserActivityDebug', ['VisSense', function (VisSense) {
+    var d = {
+      scope: {
+        inactiveAfter: '@'
+      },
+      controller: ['$scope', '$interval', function ($scope, $interval) {
+        $scope.options = {
+          inactiveAfter: $scope.inactiveAfter || 30000
+        };
+
+        var activityMonitor = new VisSense.UserActivity($scope.options).start();
+
+        $scope.active = true;
+        var intervalId = $interval(function() {
+          $scope.active = activityMonitor.isActive();
+        }, 1000);
+
+        $scope.$on('$destroy', function() {
+          $interval.cancel(intervalId);
+        })
+      }],
+      template: '<span>isActive? {{active}}</span>'
+    };
+
+    return d;
+  }])
 ;
 
 }(angular, _));

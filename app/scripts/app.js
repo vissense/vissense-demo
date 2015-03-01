@@ -9,8 +9,7 @@ angular.module('vissensePlayground', [
 'tbk.githubVersion',
 'restangular',
 'vissense.playground.states',
-'nvd3ChartDirectives',
-'hljs' // angular-highlight.js
+'nvd3ChartDirectives'
 ])
 
 .filter('reverse', function() {
