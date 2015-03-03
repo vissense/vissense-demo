@@ -17,17 +17,17 @@
     "tbk-angular-draggable": "theborakompanioni/tbk-angular-draggable#0.0.2",
     "tbk-angular-github-version": "theborakompanioni/tbk-angular-github-version#master",
     "google-code-prettify": "~1.0.3",
-    "vissense": "vissense/vissense#master",
+    "vissense": "vissense/vissense#0.4.0",
     "vissense-percentage-time-test": "vissense/vissense-percentage-time-test#master",
     "vissense-metrics": "vissense/vissense-metrics#master",
-    "vissense-user-activity": "vissense/vissense-user-activity#master"
+    "vissense-user-activity": "vissense/vissense-user-activity#0.1.0"
   },
   "devDependencies": {
     "angular-mocks": "1.2.18"
   },
   "resolutions": {
     "d3": "~3.4.1",
-    "vissense": "master",
+    "vissense": "0.4.0",
     "angular": "1.3.12"
   }
 }
