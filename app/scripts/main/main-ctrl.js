@@ -1,11 +1,11 @@
 (function (window, document, angular) {
-'use strict';
+  'use strict';
 
-angular.module('vissensePlayground')
+  angular.module('vissensePlayground')
 
-.controller('MainCtrl', [function () {
+    .controller('MainCtrl', [function () {
 
-}]);
+    }]);
 
 
 })(window, document, angular);

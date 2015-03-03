@@ -1,4 +1,4 @@
-(function (window, document, angular, VisSense, VisSenseUtils, _, moment, jQuery, undefined) {
+(function (window, document, angular, jQuery, undefined) {
   'use strict';
 
   angular.module('vissensePlayground')
@@ -14,7 +14,6 @@
           jQuery('html, body').animate({
             scrollTop: jQuery('#' + elementId).offset().top
           }, 500);
-          //$window.scrollTo(0, top);
         };
 
         var changeOpacityOnPercentageChangeOfElementWithId = function (elementId) {
@@ -51,4 +50,4 @@
       }]);
 
 
-})(window, document, angular, VisSense, VisSense.Utils, _, moment, jQuery);
+})(window, document, angular, jQuery);

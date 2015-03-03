@@ -1,4 +1,4 @@
-(function (window, document, angular, VisSense, VisSenseUtils, _, moment, jQuery, undefined) {
+(function (window, document, angular, _, undefined) {
   'use strict';
 
   angular.module('vissensePlayground')
@@ -30,4 +30,4 @@
       }]);
 
 
-})(window, document, angular, VisSense, VisSense.Utils, _, moment, jQuery);
+})(window, document, angular, _);

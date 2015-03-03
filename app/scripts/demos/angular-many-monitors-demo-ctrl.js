@@ -1,4 +1,4 @@
-(function (window, document, angular, VisSense, VisSenseUtils, _, moment, jQuery, undefined) {
+(function (window, document, angular, undefined) {
   'use strict';
 
   angular.module('vissensePlayground')
@@ -12,10 +12,10 @@
           monitorCountMax: 200
         };
 
-        $scope.model.logEvent = function(description) {
+        $scope.model.logEvent = function (description) {
           $log.info(description);
         };
       }]);
 
 
-})(window, document, angular, VisSense, VisSense.Utils, _, moment, jQuery);
+})(window, document, angular);
