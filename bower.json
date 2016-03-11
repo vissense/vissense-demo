@@ -5,7 +5,7 @@
     "angular": "1.3.12",
     "angularjs-nvd3-directives": "0.0.7",
     "angular-ui-router": "0.2.10",
-    "angular-vissense": "vissense/angular-vissense#0.0.2",
+    "angular-vissense": "vissense/angular-vissense#0.1.0",
     "modernizr": "2.6.2",
     "restangular": "1.4.0",
     "bootstrap-sass-official": "3.1.1",
@@ -17,7 +17,7 @@
     "tbk-angular-draggable": "theborakompanioni/tbk-angular-draggable#0.0.2",
     "tbk-angular-github-version": "theborakompanioni/tbk-angular-github-version#master",
     "google-code-prettify": "~1.0.3",
-    "vissense": "vissense/vissense#0.4.0",
+    "vissense": "vissense/vissense#0.10.0",
     "vissense-percentage-time-test": "vissense/vissense-percentage-time-test#master",
     "vissense-metrics": "vissense/vissense-metrics#master",
     "vissense-user-activity": "vissense/vissense-user-activity#0.1.0"
@@ -27,7 +27,7 @@
   },
   "resolutions": {
     "d3": "~3.4.1",
-    "vissense": "0.4.0",
+    "vissense": "0.10.0",
     "angular": "1.3.12"
   }
 }

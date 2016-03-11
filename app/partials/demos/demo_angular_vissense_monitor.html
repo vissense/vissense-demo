@@ -1,4 +1,3 @@
-
 <section data-tbk-default-demo-navigation></section>
 
 <header class="container">
@@ -7,59 +6,59 @@
 
 <div class="container" id="draggable-example-container" style="margin-top: 30px;">
 
-<style>
-#alert-container-container {
-  font-size: 0.8em;
-}
+  <style>
+    #alert-container-container {
+      font-size: 0.8em;
+    }
 
-.alert-container-xs,
-.alert-container-sm {
-}
+    .alert-container-xs,
+    .alert-container-sm {
+    }
 
-.alert-container-md,
-.alert-container-lg {
-  z-index: 999;
-  position: fixed;
-  right: 10px;
-  top:10px;
-  width: 380px;
-}
+    .alert-container-md,
+    .alert-container-lg {
+      z-index: 999;
+      position: fixed;
+      right: 10px;
+      top: 10px;
+      width: 380px;
+    }
 
-#alert-container-container .alert {
-  margin: 10px;
-  padding: 3px;
-  box-shadow: 1px 1px 1px 2px rgba(99, 99, 99, 0.4);
-  background-color: rgba(242,242,242,0.9);
-}
-</style>
-<div id="alert-container-container">
-  <div class="alert-container-md visible-md visible-lg">
-    <div class="alert" data-ng-repeat="event in model.events | reverse" class="log alert" data-ng-class="{
+    #alert-container-container .alert {
+      margin: 10px;
+      padding: 3px;
+      box-shadow: 1px 1px 1px 2px rgba(99, 99, 99, 0.4);
+      background-color: rgba(242, 242, 242, 0.9);
+    }
+  </style>
+  <div id="alert-container-container">
+    <div class="alert-container-md visible-md visible-lg">
+      <div class="alert" data-ng-repeat="event in model.events | reverse" class="log alert" data-ng-class="{
       'color--danger': event.name == 'hidden',
       'color--green': event.name == 'fullyvisible',
       'color--yellow': event.name == 'visible',
       'color--highlight': event.name == 'visibilitychange',
       'color--learning': event.name == 'percentagechange'
     }">
-      <div><i class="fa fa-clock-o"></i> {{event.time | date:'MMM d, y h:mm:ss.sss a'}}</div>
-      <div>{{event.name}}</div>
-      <div>{{event.description}}</div>
+        <div><i class="fa fa-clock-o"></i> {{event.time | date:'MMM d, y h:mm:ss.sss a'}}</div>
+        <div>{{event.name}}</div>
+        <div>{{event.description}}</div>
+      </div>
     </div>
-  </div>
-  <div class="alert-container-sm visible-xs visible-sm">
-    <div class="alert" data-ng-repeat="event in model.events | reverse" class="log alert" data-ng-class="{
+    <div class="alert-container-sm visible-xs visible-sm">
+      <div class="alert" data-ng-repeat="event in model.events | reverse" class="log alert" data-ng-class="{
       'color--danger': event.name == 'hidden',
       'color--green': event.name == 'fullyvisible',
       'color--yellow': event.name == 'visible',
       'color--highlight': event.name == 'visibilitychange',
       'color--learning': event.name == 'percentagechange'
     }">
-      <div><i class="fa fa-clock-o"></i> {{event.time | date:'MMM d, y h:mm:ss.sss a'}}</div>
-      <div>{{event.name}}</div>
-      <div>{{event.description}}</div>
+        <div><i class="fa fa-clock-o"></i> {{event.time | date:'MMM d, y h:mm:ss.sss a'}}</div>
+        <div>{{event.name}}</div>
+        <div>{{event.description}}</div>
+      </div>
     </div>
   </div>
-</div>
 
   <div id="example1" class="default-draggable-element"
        data-tbk-draggable
@@ -74,10 +73,6 @@
     <div tbk-default-draggable-element="example1"></div>
   </div>
 
-  <div class="lorem-ipsum">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. </p>
-
-  </div>
   <h3>Code</h3>
 <pre data-tbk-code-prettify="" data-lang="html">
 &lt;div data-vissense-monitor
